@@ -1,0 +1,119 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="hamburger" (click)="togglesidebarmenu(sidebarmenu)">
+    <div #cta class="cta" (click)="expandSideBar(cta)">
+      <div class="toggle-btn type14"></div>
+    </div>
+  </div>
+
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/logo.jpeg" alt="logo" style="width:80px;height: 50px">
+  </a>
+
+  <!-- Links -->
+  <ul class="navbar-nav ml-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="logout()"><i class="fas fa-sign-out-alt"></i></a>
+    </li>
+  </ul>
+</nav>
+
+
+<section class="side-bar-warp">
+  <div class="sidebar-menu small-side-bar flowHide" #sidebarmenu>
+    <nav class="">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+              <span class="sidebar-icon"><img src="images/dashboard.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight nav-link-name animated tax-show">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/create-quest.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Creat a Quest</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/manage-quests.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Manage Quests</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/leaderboards.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Leaderboards</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/one-on-one.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">One On Ones</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/give-kudos.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Give Kudos</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/settings.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name name-hide tax-show">Nation Settings</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/feedback.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name name-hide tax-show">Help/Feedback</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <span class="sidebar-icon"><img src="images/log-out.png" alt=""></span>
+            <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name name-hide tax-show">Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
+
+</section>
+<div class="tableX">
+  <div class="search-bar">
+    <label> {{listSize}} campaigns </label><br>
+    <input type="text" placeholder="Search" [(ngModel)]="searchText" (change)="search()">
+
+<!--    <mat-form-field>-->
+<!--      <mat-label>Filter by Locations</mat-label><br>-->
+<!--      <mat-select>-->
+<!--        <mat-option *ngFor="let location of locations" [value]="location.value">-->
+<!--          {{location.viewValue}}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+
+
+  </div>
+  <table matSort (matSortChange)="sortData($event)" >
+  <tr>
+    <th class="padding-table" mat-sort-header="name">Campaign Name</th>
+    <th class="padding-table" mat-sort-header="date">Date</th>
+    <th class="padding-table" mat-sort-header="status">Status</th>
+
+  </tr>
+
+  <tr *ngFor="let campaign of campaignList">
+    <td class="padding-table">{{campaign.company}}</td>
+    <td class="padding-table">{{campaign.date}}</td>
+    <td class="padding-table">{{campaign.status}}</td>
+  </tr>
+</table>
+</div>

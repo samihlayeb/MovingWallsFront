@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http : HttpClient) { }
 
-  authenticate(user : User) {
-    return this.http.post(URLS.BASEURL + URLS.LOGIN,user);
+  authenticate(user : User, rememberMe: number) {
+    return this.http.post(URLS.BASEURL + URLS.LOGIN,{userName: user.userName, password: user.password, rememberMe: rememberMe});
   }
 }
