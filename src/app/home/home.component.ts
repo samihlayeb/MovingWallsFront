@@ -6,10 +6,19 @@ import {RestService} from '../rest.service';
 import {Campaign} from '../models/Campaign';
 import {Response} from '../models/response';
 
-// export interface location {
-//   value: string;
-//   viewValue: string;
-// }
+export interface location {
+  value: string;
+  viewValue: string;
+}
+
+export interface dat {
+  value: string;
+  viewValue: string;
+}
+export interface sorting {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,12 +31,24 @@ export class HomeComponent implements OnInit {
   campaignList : Campaign[] = [];
   listSize : number ;
   expandMenu: boolean;
-  // locations: location[] = [
-  //   {value: 'Malaysia', viewValue: 'Malaysia'},
-  //   {value: 'Hungary', viewValue: 'Hungary'},
-  //   {value: 'France', viewValue: 'France'},
-  //   {value: 'Singapore', viewValue: 'Singapore'}
-  // ];
+  locations: location[] = [
+    {value: 'Malaysia', viewValue: 'Malaysia'},
+    {value: 'Hungary', viewValue: 'Hungary'},
+    {value: 'France', viewValue: 'France'},
+    {value: 'Singapore', viewValue: 'Singapore'}
+  ];
+  dates: dat[] = [
+    {value: 'Today', viewValue: 'Today'},
+    {value: 'Tomorrow', viewValue: 'Tomorrow'},
+    {value: 'Last week', viewValue: 'Last Month'},
+    {value: 'Last Month ', viewValue: 'Last Month'},
+    {value: 'Last year', viewValue: 'Last year'}
+  ];
+  sortings: sorting[] = [
+    {value:'Date' , viewValue: 'Date'},
+    {value:'Status' , viewValue: 'Status'},
+    {value:'Alphabetical order' , viewValue: 'Alphabetical order'}
+  ]
 
   constructor(private router: Router, private service: RestService) {
     this.sortedData = this.campaignList.slice();
@@ -60,6 +81,12 @@ export class HomeComponent implements OnInit {
 
       })
     }
+  }
+  sort() {
+    this.service.sort(0,10).subscribe((data: Response) => {
+      this.campaignList =data.data;
+      this.listSize = data.dataSize;
+    })
   }
 
 
