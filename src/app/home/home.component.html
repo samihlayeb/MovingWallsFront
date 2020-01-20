@@ -121,5 +121,11 @@
     <td class="padding-table" href="#" > <i class="fas fa-ellipsis-v"></i> </td>
   </tr>
 </table>
+
+</div>
+<div >
+  <mat-paginator class="mat-paginator" [length]="100"
+                 [pageSize]="10" (click)="getNext()">
+  </mat-paginator>
 </div>
 

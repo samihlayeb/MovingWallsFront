@@ -272,3 +272,8 @@ body{
 th.mat-sort-header-sorted {
   color: black;
 }
+.mat-paginator {
+  position: relative;
+  top:880px;
+left: -650px;
+}

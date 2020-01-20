@@ -11,7 +11,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import {MatSelectModule} from '@angular/material/select';
-import {MatExpansionModule} from '@angular/material';
+import {MatExpansionModule, MatPaginatorModule} from '@angular/material';
+
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     MatTableModule,
     MatSortModule,
     MatSelectModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

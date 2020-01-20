@@ -31,6 +31,8 @@ export class HomeComponent implements OnInit {
   campaignList : Campaign[] = [];
   listSize : number ;
   expandMenu: boolean;
+  i: number =0;
+  j:number = 10 ;
   locations: location[] = [
     {value: 'Malaysia', viewValue: 'Malaysia'},
     {value: 'Hungary', viewValue: 'Hungary'},
@@ -64,7 +66,7 @@ export class HomeComponent implements OnInit {
     this.getAll() ;
   }
   getAll() {
-    this.service.getBetween(0,10).subscribe((data: Response) =>  {
+    this.service.getBetween(this.i,this.j).subscribe((data: Response) =>  {
       console.log(data);
       this.campaignList = data.data;
       this.listSize = data.dataSize;
@@ -75,7 +77,7 @@ export class HomeComponent implements OnInit {
       this.getAll();
     }
     else {
-      this.service.searchBy(0, 10, "company", this.searchText).subscribe((data: Response) => {
+      this.service.searchBy(this.i, this.j, "company", this.searchText).subscribe((data: Response) => {
         this.campaignList = data.data;
         this.listSize = data.dataSize;
 
@@ -83,7 +85,7 @@ export class HomeComponent implements OnInit {
     }
   }
   sort() {
-    this.service.sort(0,10).subscribe((data: Response) => {
+    this.service.sort(this.i,this.j).subscribe((data: Response) => {
       this.campaignList =data.data;
       this.listSize = data.dataSize;
     })
@@ -112,6 +114,17 @@ export class HomeComponent implements OnInit {
       return;
     }
 
+  }
+
+  getNext() {
+    this.i = this.i+10;
+    this.j = this.j+10;
+    console.log(this.i) ;
+    this.service.getBetween(this.i,this.j).subscribe((data: Response) =>  {
+      console.log(data);
+      this.campaignList = data.data;
+      this.listSize = data.dataSize;
+    })
   }
 }
 
