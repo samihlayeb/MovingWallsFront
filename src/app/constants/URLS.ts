@@ -1,5 +1,5 @@
 export class URLS {
-  static BASEURL = 'http://localhost:4000/';
+  static BASEURL = 'https://movingwall.herokuapp.com/';
   static LOGIN = 'authenticate';
   static GET = 'home';
   static SEARCH = 'search';
