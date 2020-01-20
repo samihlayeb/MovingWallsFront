@@ -103,7 +103,7 @@
     <mat-form-field>
       <mat-label>Sort by </mat-label><br>
       <mat-select>
-        <mat-option *ngFor="let sorting of sortings" [value]="sorting.value" >
+        <mat-option *ngFor="let sorting of sortings" [value]="sorting.value" (click)="somefunction(sorting)">
           {{sorting.viewValue}}
         </mat-option>
       </mat-select>
@@ -115,7 +115,6 @@
     <th class="padding-table" mat-sort-header="name">Campaign Name</th>
     <th class="padding-table" mat-sort-header="date">Date</th>
     <th class="padding-table" mat-sort-header="status">Status</th>
-    <th class="padding-table" mat-sort-header="status"></th>
 
   </tr>
 
@@ -123,7 +122,16 @@
     <td class="padding-table">{{campaign.company}}</td>
     <td class="padding-table">{{campaign.date}}</td>
     <td class="padding-table">{{campaign.status}} </td>
-    <td class="padding-table" href="#" > <i class="fas fa-ellipsis-v"></i> </td>
+    <td class="padding-table" href="#">
+     <div *ngIf="campaign.status == 'Published'">
+      <button>VIEW REPORT </button><i class="fas fa-ellipsis-v"> </i></div>
+      <div *ngIf="campaign.status == 'Processed'">
+      <a>Available in</a><i class="fas fa-ellipsis-v"> </i></div>
+      <div *ngIf="campaign.status == 'Ongoing'">
+      <a>ENDING IN  </a><i class="fas fa-ellipsis-v"> </i></div>
+      <div *ngIf="campaign.status == 'Archived'">
+      <button>DOWNLOAD REPORT</button><i class="fas fa-ellipsis-v"> </i></div>
+    </td>
   </tr>
 </table>
 

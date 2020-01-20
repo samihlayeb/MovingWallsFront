@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   sortedData: Campaign[];
   searchText : string;
   campaignList : Campaign[] = [];
+  initialList : Campaign[] = [];
   listSize : number ;
   expandMenu: boolean;
   i: number =0;
@@ -69,6 +70,7 @@ export class HomeComponent implements OnInit {
     this.service.getBetween(this.i,this.j).subscribe((data: Response) =>  {
       console.log(data);
       this.campaignList = data.data;
+      this.initialList = this.campaignList.slice();
       this.listSize = data.dataSize;
     })
   }
@@ -101,21 +103,17 @@ export class HomeComponent implements OnInit {
     sidebarmenu.classList.toggle('full-side-bar');
     this.expandMenu = !this.expandMenu;
   }
-
   logout() {
     localStorage.clear();
     this.router.navigateByUrl('/login');
   }
-
   sortData(sort: Sort) {
     const data = this.campaignList.slice();
     if (!sort.active || sort.direction === '') {
       this.sortedData = data;
       return;
     }
-
   }
-
   getNext() {
     this.i = this.i+10;
     this.j = this.j+10;
@@ -125,6 +123,13 @@ export class HomeComponent implements OnInit {
       this.campaignList = data.data;
       this.listSize = data.dataSize;
     })
+  }
+  somefunction(sorting : sorting) {
+    sorting.value == 'Stat' ? this.sort() : this.getAllAgain();
+  }
+  getAllAgain()
+  {
+    this.campaignList=this.initialList.slice() ;
   }
 }
 
