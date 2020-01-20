@@ -275,5 +275,27 @@ th.mat-sort-header-sorted {
 .mat-paginator {
   position: relative;
   top:880px;
-left: -650px;
+  left: -650px;
+}
+.labe {
+  position: absolute;
+  left : 250px ;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+.label{
+  position: absolute;
+  left : 250px ;
+  color: #171717;
+}
+.title{
+  left : 250px ;
+  color: #9C9C9C;
+  font-size: 12px;
+}
+.footer {
+  position: relative;
+  top:900px;
+  color: #9C9C9C;
+  font-size: 12px;
 }

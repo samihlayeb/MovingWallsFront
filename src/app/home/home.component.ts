@@ -47,9 +47,9 @@ export class HomeComponent implements OnInit {
     {value: 'Last year', viewValue: 'Last year'}
   ];
   sortings: sorting[] = [
-    {value:'Date' , viewValue: 'Date'},
-    {value:'Status' , viewValue: 'Status'},
-    {value:'Alphabetical order' , viewValue: 'Alphabetical order'}
+    {value:'Dat' , viewValue: 'Date'},
+    {value:'Stat' , viewValue: 'Status'},
+    {value:'Alphabetical ' , viewValue: 'Alphabetical order'}
   ]
 
   constructor(private router: Router, private service: RestService) {
