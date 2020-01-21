@@ -6,11 +6,16 @@ body{
 }
 .tableX {
   position: absolute;
-  left : 250px ;
-
+  left : 360px ;
+}
+.tableau{
+  border-spacing: 0px 15px;
+  border-collapse: inherit;
 }
 .padding-table {
-  padding: 20px;
+  padding: 18px;
+  border: none;
+  text-align: center;
 }
 ::-moz-selection {
   color: #fff;
@@ -275,7 +280,7 @@ th.mat-sort-header-sorted {
 }
 .mat-paginator {
   position: relative;
-  top:750px;
+  top:870px;
   left: -630px;
   height: 0px;
 }
@@ -297,7 +302,7 @@ th.mat-sort-header-sorted {
 }
 .footer {
   position: relative;
-  top:800px;
+  top:930px;
   color: #606060;
   font-size: 12px;
 }
@@ -335,3 +340,10 @@ th.mat-sort-header-sorted {
   border-right: none;
   border-color: #171717;
 }
+#row1, #row2 ,#row3 , #row4 {
+  background-color: white;
+}
+#th1, #th2 ,#th3{
+  color: #00418A;
+}
+
