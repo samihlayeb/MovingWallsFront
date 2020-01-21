@@ -1,4 +1,4 @@
-
+<div class="backG">
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="hamburger" (click)="togglesidebarmenu(sidebarmenu)">
     <div #cta class="cta" (click)="expandSideBar(cta)">
@@ -25,7 +25,7 @@
   </ul>
 </nav>
 <div class="page">
-  <div class="hero-image">
+
 
 <section class="side-bar-warp">
   <div class="sidebar-menu small-side-bar flowHide" #sidebarmenu>
@@ -115,7 +115,7 @@
   </div>
 <div class="tableX">
   <table class="tableau" matSort (matSortChange)="sortData($event)">
-  <tr>
+  <tr class="tr1">
     <th id="th1" class="padding-table" mat-sort-header="name">Campaign Name</th>
     <th id="th2" class="padding-table" mat-sort-header="date">Date</th>
     <th id="th3" class="padding-table" mat-sort-header="status">Status</th>
