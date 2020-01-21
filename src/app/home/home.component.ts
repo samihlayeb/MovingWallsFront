@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
   }
   search() {
     if (this.searchText=="") {
-      this.getAll();
+      this.getAllAgain();
     }
     else {
       this.service.searchBy(this.i, this.j, "company", this.searchText).subscribe((data: Response) => {
