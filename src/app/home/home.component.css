@@ -7,6 +7,7 @@ body{
 .tableX {
   position: absolute;
   left : 250px ;
+
 }
 .padding-table {
   padding: 20px;
@@ -160,7 +161,7 @@ body{
 }
 
 .sidebar-menu .navbar-nav .nav-link {
-  padding: 15;
+  padding: 15px;
   position: relative;
   white-space: nowrap;
 
@@ -274,13 +275,14 @@ th.mat-sort-header-sorted {
 }
 .mat-paginator {
   position: relative;
-  top:880px;
-  left: -650px;
+  top:750px;
+  left: -630px;
+  height: 0px;
 }
 .labe {
   position: absolute;
   left : 250px ;
-  color: #9C9C9C;
+  color: #606060;
   font-size: 12px;
 }
 .label{
@@ -290,12 +292,46 @@ th.mat-sort-header-sorted {
 }
 .title{
   left : 250px ;
-  color: #9C9C9C;
+  color: #606060;
   font-size: 12px;
 }
 .footer {
   position: relative;
-  top:900px;
-  color: #9C9C9C;
+  top:800px;
+  color: #606060;
   font-size: 12px;
+}
+.hero-image {
+  background: linear-gradient(rgba(243, 237, 247, 0.52), rgba(243, 237, 247, 0.52)), url("src/assets/background.jpg");
+  height: 1200px;
+  width: 1519px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+.buttond {
+  background-color: Transparent;
+  border-radius: 20px;
+  border-color: #00418a;
+}
+.name {
+  color:#00418a ;
+}
+.filters{
+  position: relative;
+  left: 250px;
+  width: 1100px;
+}
+
+.page {
+  height: 1200px;
+  width: 1519px;
+}
+.search {
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-color: #171717;
 }

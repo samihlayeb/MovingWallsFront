@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="hamburger" (click)="togglesidebarmenu(sidebarmenu)">
     <div #cta class="cta" (click)="expandSideBar(cta)">
@@ -23,7 +24,8 @@
     </li>
   </ul>
 </nav>
-
+<div class="page">
+  <div class="hero-image">
 
 <section class="side-bar-warp">
   <div class="sidebar-menu small-side-bar flowHide" #sidebarmenu>
@@ -31,37 +33,37 @@
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" href="#">
-              <span class="sidebar-icon">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-chevron-circle-down"></i></span>
+              <span class="sidebar-icon"><i class="fas fa-chevron-circle-down"></i></span>
             <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight nav-link-name animated tax-show">Select Campaign </span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <span class="sidebar-icon">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-bullseye"></i></span>
+            <span class="sidebar-icon"><i class="fas fa-bullseye"></i></span>
             <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Campaign Details</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <span class="sidebar-icon">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fab fa-safari"></i></span>
+            <span class="sidebar-icon"><i class="fab fa-safari"></i></span>
             <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Performance Summary</span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <span class="sidebar-icon">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-dot-circle"></i></span>
+            <span class="sidebar-icon"><i class="far fa-dot-circle"></i></span>
             <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Sites </span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <span class="sidebar-icon">&nbsp;&nbsp;&nbsp;&nbsp;<i class="far fa-square"></i></span>
+            <span class="sidebar-icon"><i class="far fa-square"></i></span>
             <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Audience </span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <span class="sidebar-icon">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-chart-pie"></i></span>
+            <span class="sidebar-icon"><i class="fas fa-chart-pie"></i></span>
             <span [ngClass]="expandMenu ? '' : 'name-hide'" class="fadeInRight animated nav-link-name tax-show">Time</span>
           </a>
         </li>
@@ -77,21 +79,21 @@
 </div>
 <br><br>
 </section>
-<div class="tableX">
+  <div class="filters">
   <div class="search-bar">
     <label class="title"> {{listSize}} campaigns </label><br>
-    <input type="text" placeholder="Search" [(ngModel)]="searchText" (change)="search()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input class="search" type="text" placeholder="Search" [(ngModel)]="searchText" (change)="search()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
     <mat-form-field>
-    <mat-label>Filter by Locations</mat-label><br>
-    <mat-select>
-      <mat-option *ngFor="let location of locations" [value]="location.value" >
-        {{location.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-label>Filter by Locations</mat-label><br>
+      <mat-select>
+        <mat-option *ngFor="let location of locations" [value]="location.value" >
+          {{location.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- <mat-form-field>
+    <mat-form-field>
       <mat-label>Filter by Date</mat-label><br>
       <mat-select>
         <mat-option *ngFor="let dat of dates" [value]="dat.value">
@@ -109,28 +111,28 @@
       </mat-select>
     </mat-form-field>
 
+  </div>
   </div><br>
+<div class="tableX">
   <table matSort (matSortChange)="sortData($event)" class="table-bordered">
   <tr>
     <th class="padding-table" mat-sort-header="name">Campaign Name</th>
     <th class="padding-table" mat-sort-header="date">Date</th>
     <th class="padding-table" mat-sort-header="status">Status</th>
-
   </tr>
-
   <tr *ngFor="let campaign of campaignList">
     <td class="padding-table">{{campaign.company}}</td>
     <td class="padding-table">{{campaign.date}}</td>
     <td class="padding-table">{{campaign.status}} </td>
     <td class="padding-table" href="#">
      <div *ngIf="campaign.status == 'Published'">
-      <button>VIEW REPORT </button><i class="fas fa-ellipsis-v"> </i></div>
+      <button class="buttond"> <a class="name">VIEW REPORT</a></button> &nbsp;<i class="fas fa-ellipsis-v"> </i></div>
       <div *ngIf="campaign.status == 'Processed'">
-      <a>Available in</a><i class="fas fa-ellipsis-v"> </i></div>
+      <a class="name">Available in</a> &nbsp;<i class="fas fa-ellipsis-v"> </i></div>
       <div *ngIf="campaign.status == 'Ongoing'">
-      <a>ENDING IN  </a><i class="fas fa-ellipsis-v"> </i></div>
+      <a class="name">ENDING IN  </a > &nbsp;<i class="fas fa-ellipsis-v"> </i></div>
       <div *ngIf="campaign.status == 'Archived'">
-      <button>DOWNLOAD REPORT</button><i class="fas fa-ellipsis-v"> </i></div>
+      <button class="buttond" ><a class="name">DOWNLOAD REPORT</a></button> &nbsp;<i class="fas fa-ellipsis-v"> </i></div>
     </td>
   </tr>
 </table>
@@ -142,7 +144,9 @@
   </mat-paginator>
 </div>
 <footer class="footer">
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Glossary &nbsp;  Knowledge Base &nbsp; Terms & Conditions &nbsp; Privacy &nbsp;  Policy &nbsp; Support <br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Glossary &nbsp;  Knowledge Base &nbsp; Terms & Conditions &nbsp; Privacy &nbsp;  Policy &nbsp; Support <br>
   &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;© MovingWalls 2019  &nbsp; All rights reserved
 </footer>
+</div>
+</div>
