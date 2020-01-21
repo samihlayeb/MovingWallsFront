@@ -123,7 +123,14 @@
   <tr class="tr" *ngFor="let campaign of campaignList">
     <td id="row1" class="padding-table">{{campaign.company}}</td>
     <td id="row2" class="padding-table">{{campaign.date}}</td>
-    <td id="row3" class="padding-table">{{campaign.status}} </td>
+    <td id="row3" class="padding-table">
+      <a *ngIf="campaign.status == 'Published'"><i class="fas fa-clipboard-check"></i> &nbsp;</a>
+      <a *ngIf="campaign.status == 'Processed'"><i class="fas fa-database"></i> &nbsp;</a>
+      <a *ngIf="campaign.status == 'Ongoing'"><i class="far fa-clock"></i> &nbsp;</a>
+      <a *ngIf="campaign.status == 'Archived'"><i class="fas fa-archive"></i> &nbsp;</a>
+      {{campaign.status}}
+    </td>
+
     <td id="row4" class="padding-table" href="#">
      <div *ngIf="campaign.status == 'Published'">
       <button class="buttond"> <a class="name">VIEW REPORT</a></button> &nbsp;<i class="fas fa-ellipsis-v"> </i></div>
